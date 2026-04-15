@@ -43,14 +43,6 @@ defmodule Livekit.RoomServiceClient do
        [
          {"Content-Type", "application/protobuf"},
          {"Accept", "application/protobuf"}
-       ]},
-      {Tesla.Middleware.Logger,
-       [
-         debug: false,
-         filter_headers: ["authorization"],
-         formatter: fn env, _opts ->
-           "#{env.method} #{env.url} -> #{env.status}"
-         end
        ]}
     ]
 
