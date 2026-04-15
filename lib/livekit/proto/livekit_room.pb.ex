@@ -183,18 +183,20 @@ defmodule Livekit.SendDataRequest do
 
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
+  # Field numbers corrected to match livekit/protocol/protobufs/livekit_room.proto
   field(:room, 1, type: :string)
   field(:data, 2, type: :bytes)
   field(:kind, 3, type: Livekit.DataPacketKind, enum: true)
-  field(:destination_sids, 4, repeated: true, type: :string, json_name: "destinationSids")
+  field(:destination_sids, 4, repeated: true, type: :string, json_name: "destinationSids", deprecated: true)
+  field(:topic, 5, type: :string, proto3_optional: true)
 
-  field(:destination_identities, 5,
+  field(:destination_identities, 6,
     repeated: true,
     type: :string,
     json_name: "destinationIdentities"
   )
 
-  field(:nonce, 6, type: :bytes)
+  field(:nonce, 7, type: :bytes)
 end
 
 defmodule Livekit.SendDataResponse do

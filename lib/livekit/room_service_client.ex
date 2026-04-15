@@ -314,7 +314,8 @@ defmodule Livekit.RoomServiceClient do
         kind: kind,
         destination_sids: Keyword.get(opts, :destination_sids, []),
         destination_identities: Keyword.get(opts, :destination_identities, []),
-        nonce: :crypto.strong_rand_bytes(16)
+        nonce: :crypto.strong_rand_bytes(16),
+        topic: Keyword.get(opts, :topic, "")
       })
       |> SendDataRequest.encode()
 
